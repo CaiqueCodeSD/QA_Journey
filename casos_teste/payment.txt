@@ -1,0 +1,2 @@
+payment accepted
+payment by NFC accepted
