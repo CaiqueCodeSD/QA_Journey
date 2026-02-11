@@ -1,0 +1,33 @@
+======================================================================
+TEST EXECUTION REPORT - VERSION 4.2.0 - 2026-02-11 20:05:12
+======================================================================
+
+[20:05:12] INFO: Carregando variáveis de ambiente do arquivo .env...
+[20:05:13] PASS: Configuração do ambiente de teste carregada.
+[20:05:13] INFO: Iniciando conexão com o container Docker 'test_db_instance'.
+[20:05:15] PASS: Banco de dados pronto para transações.
+
+--- MÓDULO: AUTENTICAÇÃO ---
+[20:05:16] INFO: Testando login com credenciais válidas.
+[20:05:17] PASS: Token JWT retornado corretamente.
+[20:05:18] INFO: Testando login com senha expirada.
+[20:05:19] WARNING: O sistema aceitou a senha, mas não disparou o alerta de renovação obrigatória.
+[20:05:20] PASS: Bloqueio de conta após 5 tentativas mal-sucedidas.
+
+--- MÓDULO: API DE PAGAMENTOS ---
+[20:05:22] INFO: Validando integração com o Gateway de Pagamento.
+[20:05:25] ERROR: Timeout na resposta do endpoint /v1/authorize (HTTP 504).
+[20:05:25] FAIL: Teste de estresse de transações simultâneas falhou.
+[20:05:26] INFO: Tentando fallback para provedor secundário...
+[20:05:28] PASS: Pagamento processado via rota de contingência.
+
+--- MÓDULO: RELATÓRIOS ---
+[20:05:30] INFO: Gerando PDF de exportação de vendas mensais.
+[20:05:32] WARNING: O tempo de renderização (4.2s) excedeu o limite recomendado de 3s.
+[20:05:33] PASS: Hash do arquivo gerado coincide com o esperado.
+
+======================================================================
+RESUMO FINAL:
+  TOTAL: 12 | PASS: 7 | INFO: 7 | WARNING: 2 | ERROR: 1 | FAIL: 1
+STATUS GERAL: FAILED (Verificar erros críticos no módulo de pagamentos)
+======================================================================
